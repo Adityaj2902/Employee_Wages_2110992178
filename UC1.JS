@@ -18,7 +18,7 @@ function getWorkingHours() {
             workHour = isFullTime; 
             break;
         default:
-            workHour = noTime;
+            workHour = noTime; 
     }
 
     return workHour;
@@ -29,16 +29,28 @@ function calculateDailyWage(workHours) {
     return workHours * wagePerHour;
 }
 
-let attendanceMark = Math.floor(Math.random() + 0.5); 
 
-if (attendanceMark === 1) {
-    console.log('Present');
-    let workHours = getWorkingHours();
-    console.log('Working Hours: ' + workHours);
-    let dailyWage = calculateDailyWage(workHours);
-    console.log('Daily Wage: $' + dailyWage);
-} else {
-    console.log('Employee is Absent Today');
+function calculateMonthlyWage() {
+    let totalMonthlyWage = 0;
+
+   
+    for (let day = 1; day <= 20; day++) {
+        let workHours = getWorkingHours();
+        let dailyWage = calculateDailyWage(workHours);
+        totalMonthlyWage += dailyWage; 
+    }
+
+    return totalMonthlyWage;
 }
 
 
+let attendanceMark = Math.floor(Math.random() + 0.5);  
+
+if (attendanceMark === 1) {
+    console.log('Present');
+    
+    let monthlyWage = calculateMonthlyWage();
+    console.log('Monthly Wage:' + monthlyWage);
+} else {
+    console.log(' Absent');
+}
